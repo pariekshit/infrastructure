@@ -1,0 +1,10 @@
+[local]
+localhost
+
+[dev]
+52.14.51.131
+
+[qa]
+
+
+[prod]

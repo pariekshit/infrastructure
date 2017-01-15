@@ -1,0 +1,28 @@
+- name: 1. add group "tomcat"
+  group: name=tomcat
+
+- name: 2. add user "tomcat"
+  user: name=tomcat group=tomcat home=/usr/share/tomcat createhome=no
+  become: True
+  become_method: sudo
+
+- name: 3. Download Tomcat
+  get_url: url=http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.61/bin/apache-tomcat-7.0.61.tar.gz dest=/opt/apache-tomcat-7.0.61.tar.gz
+
+- name: 4. Extract archive
+  #command: chdir=/usr/share /bin/tar xvf /opt/apache-tomcat-7.0.61.tar.gz -C /opt/ creates=/opt/apache-tomcat-7.0.61
+  unarchive: 
+    src: /opt/apache-tomcat-7.0.61.tar.gz 
+    dest: /opt/
+    remote_src: True
+
+- name: 5. Symlink install directory
+  file: src=/opt/apache-tomcat-7.0.61 path=/opt/tomcat state=link
+
+- name: 6. change to tomcat
+  file:
+    path: /opt/tomcat/
+    mode: u=rwX,g=rX,o=rX
+    recurse: yes
+    owner: tomcat
+    group: tomcat

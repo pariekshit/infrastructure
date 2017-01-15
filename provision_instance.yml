@@ -1,0 +1,11 @@
+#!/usr/bin/env ansible-playbook -i inventory/hosts
+
+---
+- name: Provision Instance 
+  hosts: localhost 
+  connection: local
+  gather_facts: false
+  vars_files:
+        - "inventory/{{env}}_vars.yml"
+  tasks:
+        - include: tasks/ec2instance.yml

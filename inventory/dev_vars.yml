@@ -1,0 +1,5 @@
+keypair: test
+instance_type: t2.micro
+security_group: tomcat_sec_group
+image: ami-5c705539 ## PRE-BAKED AMI WITH JAVA 1.8 INSTALLED
+region: us-east-2

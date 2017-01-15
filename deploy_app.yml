@@ -1,0 +1,10 @@
+#!/usr/bin/env ansible-playbook
+
+---
+- name: Deploy Artifact 
+  hosts: "{{env}}"
+  become_method: sudo
+  vars_files:
+        - "inventory/{{env}}_vars.yml"
+  tasks:
+        - include: tasks/deployapp.yml
