@@ -1,4 +1,4 @@
-- name: run tests on application
+- name: 1. run tests on application
   action: uri url=http://localhost:8080/CounterWebApp return_content=yes
   register: webpage
 

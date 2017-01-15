@@ -1,7 +1,7 @@
 #!/usr/bin/env ansible-playbook
 
 ---
-- name: Install Tomcat 
+- name: Run Tests 
   hosts: "{{env}}"
   become_method: sudo
   vars_files:
