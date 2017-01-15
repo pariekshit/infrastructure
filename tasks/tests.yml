@@ -3,6 +3,5 @@
   register: webpage
 
 - fail: msg='application is not running'
-  when: "'Hellow World' not in webpage.content"
+  when: "'Hello World' not in webpage.content"
 
-- debug: msg="{{ ansible_hostname }}"
