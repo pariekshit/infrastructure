@@ -3,7 +3,8 @@
 ---
 - name: Install Tomcat 
   hosts: "{{env}}"
-  become_method: sudo
+  become: yes
+  become_user: root
   vars_files:
         - "inventory/{{env}}_vars.yml"
   tasks:
