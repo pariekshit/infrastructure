@@ -4,7 +4,7 @@
 - name: Deploy Artifact 
   hosts: "{{env}}"
   become: yes
-  become_user: root
+  become_user: tomcat
   vars_files:
         - "inventory/{{env}}_vars.yml"
   tasks:
