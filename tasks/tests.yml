@@ -1,0 +1,6 @@
+- name: run tests on application
+  action: uri url=http://localhost:8080/CounterWebApp return_content=yes
+  register: webpage
+
+- fail: msg='application is not running'
+  when: "'Hellow World' not in webpage.content"

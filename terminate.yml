@@ -1,0 +1,11 @@
+- hosts: dev
+  gather_facts: True
+  connection: local
+  vars: 
+    - region: 'us-west-2'
+  tasks:
+    - name: Gather EC2 facts
+      local_action: ec2_remote_facts region={{region}} filters="instance-state-name=running"
+ 
+    - debug: var=hostvars[inventory_hostname]
+    - debug: msg="{{ hostvars[inventory_hostname][id] }}"
