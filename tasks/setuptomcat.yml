@@ -19,7 +19,10 @@
 - name: 5. Symlink install directory
   file: src=/opt/apache-tomcat-7.0.61 path=/opt/tomcat state=link
 
-- name: 6. change to tomcat
+- name: 6. Install Tomcat init script
+  copy: src=files/tomcat-initscript.sh dest=/opt/tomcat/bin/init.sh mode=0755
+
+- name: 7. change to tomcat
   file:
     path: /opt/tomcat/
     mode: u=rwX,g=rX,o=rX

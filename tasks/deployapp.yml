@@ -1,13 +1,12 @@
 - name: Copy artifact bar
-  copy: src={{artifact}} dest=/opt/tomcat/webapps/ group=tomcat owner=tomcat mode=755
+  copy: src={{artifact}} dest=/opt/tomcat/webapps/ mode=755 group=tomcat owner=tomcat mode=755
 
-- name: Install Tomcat init script
-  copy: src=files/tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
-
-- name: Start Tomcat
-  service: name=tomcat state=started enabled=yes 
-
-#- name: start tomcat server
-#  command: /bin/sh /opt/tomcat/bin/startup.sh
-#  become: True
-#  become_method: sudo
+- name: start tomcat server
+  command: "./init.sh start" 
+  args:
+    chdir: /opt/tomcat/bin/
+  #command: sudo /bin/sh /opt/tomcat/bin/startup.sh
+  sudo: true
+  #become: yes
+  #become_user: tomcat
+  #become_method: sudo
